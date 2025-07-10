@@ -4,6 +4,9 @@ import {serializerCompiler, validatorCompiler, type ZodTypeProvider} from "fasti
 import {fastifyCors} from "@fastify/cors";
 import {env} from './env.ts'
 import {getRoomsRoute} from "./http/routes/get_rooms.ts";
+import { createRoomRoute } from "./http/routes/create_room.ts";
+import { getRoomQuestions } from "./http/routes/get_room_question.ts";
+import { createQuestionRoute } from "./http/routes/create_questions.ts";
 
 const app = fastify().withTypeProvider<ZodTypeProvider>()
 
@@ -19,5 +22,8 @@ app.get('/health', ()=>{
 })
 
 app.register(getRoomsRoute)
+app.register(createRoomRoute)
+app.register(getRoomQuestions)
+app.register(createQuestionRoute)
 
 app.listen({port: env.PORT})
