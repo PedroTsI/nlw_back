@@ -21,7 +21,7 @@ export const getRoomQuestions: FastifyPluginCallbackZod = (app) =>{
         const result = await db
         .select({
             id: schema.questions.id,
-            questions: schema.questions.question,
+            question: schema.questions.question,
             answer: schema.questions.answer,
             createdAt: schema.questions.created_at
         })
